@@ -26,37 +26,37 @@ public:
      * @brief Функция получения абсциссы точки
      * @return Значение абсциссы
      */
-    double getX()
+    double getX() const;
 
     /**
      * @brief Функция получения ординаты точки
      * @return Значение ординаты
      */
-    double getY()
+    double getY() const;
 
     /**
      * @brief Функция получения аппликаты точки
      * @return Значение аппликаты
      */
-    double getZ()
+    double getZ() const;
 
     /**
      * @brief Функция установки абсциссы точки
      * @param val Новое значение абсциссы
      */
-    void setX(const double val)
+    void setX(const double val);
 
     /**
      * @brief Функция установки ординаты точки
      * @param val Новое значение ординаты
      */
-    void setY(const double val)
+    void setY(const double val);
 
     /**
      * @brief Функция установки аппликаты точки
      * @param val Новое значение аппликаты
      */
-    void setZ(const double val)
+    void setZ(const double val);
 
     /**
      * @brief Вычисление расстояния между двумя точками
