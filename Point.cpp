@@ -3,7 +3,7 @@
 
 const double Point::EPS = std::numeric_limits<double>::epsilon() * 1e7;
 
-Point::Point(double x, double y, double z) : x(x), y(y), z(z) {}
+Point::Point(const double x, const double y, const double z) : x(x), y(y), z(z) {}
 
 double Point::distanceTo(const Point& other) const {
     double dx = x - other.x;
