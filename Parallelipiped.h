@@ -71,65 +71,64 @@ public:
      * @param y4 ордината четвёртой точки
      * @param z4 аппликата четвёртой точки
      */
-    Parallelipiped(double x1, double y1, double z1,
-        double x2, double y2, double z2,
-        double x3, double y3, double z3,
-        double x4, double y4, double z4);
+    Parallelipiped(const double x1, const double y1, const double z1,
+        const double x2, const double y2, const double z2,
+        const double x3, const double y3, const double z3,
+        const double x4, const double y4, const double z4);
 
     /**
      * @brief Функция получения минимальной вершины
      * @return Точка с минимальными координатами
      */
-    Point getMinVertex() const { return p1; }
+    Point getMinVertex()
 
     /**
      * @brief Функция получения максимальной вершины
      * @return Точка с максимальными координатами
      */
-    Point getMaxVertex() const { return p2; }
+    Point getMaxVertex()
 
     /**
      * @brief Функция получения длины параллелепипеда
      * @return Длина
      */
-    double getLength() const { return length; }
+    double getLength()
 
     /**
      * @brief Функция получения ширины параллелепипеда
      * @return Ширина
      */
-    double getWidth() const { return width; }
+    double getWidth()
 
     /**
      * @brief Функция получения высоты параллелепипеда
      * @return Высота
      */
-    double getHeight() const { return height; }
+    double getHeight()
 
     /**
      * @brief Функция расчёта площади поверхности параллелепипеда
      * @return Площадь поверхности (S = 2*(ab + ac + bc))
      */
-    double getSurfaceArea() const override;
+    double getSurfaceArea()
 
     /**
      * @brief Функция расчёта объёма параллелепипеда
      * @return Объём (V = a * b * c)
      */
-    double getVolume() const override;
+    double getVolume()
 
     /**
      * @brief Метод сериализации в строку toString
      * @return Сериализованная строка
      */
-    std::string toString() const override;
+    std::string toString()
 
     /**
      * @brief Метод чтения из стандартного потока ввода
      * @param is Входной поток
      */
-    void read(std::istream& is) override;
-
+    void read(std::istream& is)
     /**
      * @brief Статический метод чтения из стандартного потока ввода
      * @param is Входной поток
