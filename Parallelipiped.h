@@ -80,55 +80,55 @@ public:
      * @brief Функция получения минимальной вершины
      * @return Точка с минимальными координатами
      */
-    Point getMinVertex()
+    Point getMinVertex() const;
 
     /**
      * @brief Функция получения максимальной вершины
      * @return Точка с максимальными координатами
      */
-    Point getMaxVertex()
+    Point getMaxVertex() const;
 
     /**
      * @brief Функция получения длины параллелепипеда
      * @return Длина
      */
-    double getLength()
+    double getLength() const;
 
     /**
      * @brief Функция получения ширины параллелепипеда
      * @return Ширина
      */
-    double getWidth()
+    double getWidth() const;
 
     /**
      * @brief Функция получения высоты параллелепипеда
      * @return Высота
      */
-    double getHeight()
+    double getHeight() const;
 
     /**
      * @brief Функция расчёта площади поверхности параллелепипеда
      * @return Площадь поверхности (S = 2*(ab + ac + bc))
      */
-    double getSurfaceArea()
+    double getSurfaceArea() const override;
 
     /**
      * @brief Функция расчёта объёма параллелепипеда
      * @return Объём (V = a * b * c)
      */
-    double getVolume()
+    double getVolume() const override;
 
     /**
      * @brief Метод сериализации в строку toString
      * @return Сериализованная строка
      */
-    std::string toString()
+    std::string toString() const override;
 
     /**
      * @brief Метод чтения из стандартного потока ввода
      * @param is Входной поток
      */
-    void read(std::istream& is)
+    void read(std::istream& is) override;
     /**
      * @brief Статический метод чтения из стандартного потока ввода
      * @param is Входной поток
