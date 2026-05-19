@@ -8,10 +8,10 @@
  */
 class Point {
 private:
-    double x;   ///< Абсцисса точки
-    double y;   ///< Ордината точки
-    double z;   ///< Аппликата точки
-    static const double EPS;  ///< Точность сравнения
+    double x;   // Абсцисса точки
+    double y;   // Ордината точки
+    double z;   // Аппликата точки
+    static const double EPS;  // Точность сравнения
 
 public:
     /**
@@ -26,37 +26,37 @@ public:
      * @brief Функция получения абсциссы точки
      * @return Значение абсциссы
      */
-    double getX() const { return x; }
+    double getX()
 
     /**
      * @brief Функция получения ординаты точки
      * @return Значение ординаты
      */
-    double getY() const { return y; }
+    double getY()
 
     /**
      * @brief Функция получения аппликаты точки
      * @return Значение аппликаты
      */
-    double getZ() const { return z; }
+    double getZ()
 
     /**
      * @brief Функция установки абсциссы точки
      * @param val Новое значение абсциссы
      */
-    void setX(double val) { x = val; }
+    void setX(const double val) { x = val; }
 
     /**
      * @brief Функция установки ординаты точки
      * @param val Новое значение ординаты
      */
-    void setY(double val) { y = val; }
+    void setY(const double val) { y = val; }
 
     /**
      * @brief Функция установки аппликаты точки
      * @param val Новое значение аппликаты
      */
-    void setZ(double val) { z = val; }
+    void setZ(const double val) { z = val; }
 
     /**
      * @brief Вычисление расстояния между двумя точками
