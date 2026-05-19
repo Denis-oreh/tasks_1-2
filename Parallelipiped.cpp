@@ -46,7 +46,7 @@ Parallelipiped::Parallelipiped(const Point& v1, const Point& v2, const Point& v3
 }
 
 Parallelipiped::Parallelipiped(const Point& vertex, const double length, const double width, const double height) {
-    if (l <= EPS || w <= EPS || h <= EPS) {
+    if (length <= EPS || width <= EPS || height <= EPS) {
         throw std::invalid_argument("Длина, ширина и высота должны быть положительными числами");
     }
     p1 = vertex;
