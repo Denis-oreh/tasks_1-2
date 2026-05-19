@@ -12,7 +12,7 @@ void Parallelipiped::updateDimensions() {
     height = std::abs(p2.getZ() - p1.getZ());
 
     if (length <= EPS || width <= EPS || height <= EPS) {
-        throw std::invalid_argument("Âñå ðàçìåðû äîëæíû áûòü ïîëîæèòåëüíûìè ÷èñëàìè");
+        throw std::invalid_argument("Все размеры должны быть положительными числами");
     }
 }
 
@@ -31,7 +31,7 @@ Parallelipiped::Parallelipiped(const Point& v1, const Point& v2, const Point& v3
     height = std::abs(dz);
 
     if (length <= EPS || width <= EPS || height <= EPS) {
-        throw std::invalid_argument("Âñå ðàçìåðû äîëæíû áûòü ïîëîæèòåëüíûìè ÷èñëàìè");
+        throw std::invalid_argument("Все размеры должны быть положительными числами");
     }
 
     double minX = v1.getX();
@@ -45,13 +45,10 @@ Parallelipiped::Parallelipiped(const Point& v1, const Point& v2, const Point& v3
     p2 = Point(std::max(minX, maxX), std::max(minY, maxY), std::max(minZ, maxZ));
 }
 
-Parallelipiped::Parallelipiped(const Point& vertex, double l, double w, double h) {
+Parallelipiped::Parallelipiped(const Point& vertex, const double length, const double width, const double height) {
     if (l <= EPS || w <= EPS || h <= EPS) {
-        throw std::invalid_argument("Äëèíà, øèðèíà è âûñîòà äîëæíû áûòü ïîëîæèòåëüíûìè ÷èñëàìè");
+        throw std::invalid_argument("Длина, ширина и высота должны быть положительными числами");
     }
-    length = l;
-    width = w;
-    height = h;
     p1 = vertex;
     p2 = Point(vertex.getX() + length, vertex.getY() + width, vertex.getZ() + height);
 }
@@ -60,7 +57,7 @@ Parallelipiped::Parallelipiped(const Point& minVertex, const Point& maxVertex) {
     if (minVertex.getX() > maxVertex.getX() ||
         minVertex.getY() > maxVertex.getY() ||
         minVertex.getZ() > maxVertex.getZ()) {
-        throw std::invalid_argument("Ïåðâàÿ âåðøèíà äîëæíà áûòü ìèíèìàëüíîé, âòîðàÿ - ìàêñèìàëüíîé");
+        throw std::invalid_argument("Первая вершина должна быть минимальной, вторая - максимальной");
     }
     p1 = minVertex;
     p2 = maxVertex;
@@ -86,56 +83,56 @@ double Parallelipiped::getVolume() const {
 std::string Parallelipiped::toString() const {
     std::stringstream ss;
     ss << std::fixed << std::setprecision(3);
-    ss << "Ïàðàëëåëåïèïåä [äëèíà=" << length
-        << ", øèðèíà=" << width
-        << ", âûñîòà=" << height
-        << ", îáú¸ì=" << getVolume()
-        << ", ïëîùàäü ïîâåðõíîñòè=" << getSurfaceArea()
-        << "]; Âåðøèíû: " << p1 << " - " << p2;
+    ss << "Параллелепипед [длина=" << length
+        << ", ширина=" << width
+        << ", высота=" << height
+        << ", объём=" << getVolume()
+        << ", ?площадь поверхности=" << getSurfaceArea()
+        << "]; Вершины: " << p1 << " - " << p2;
     return ss.str();
 }
 
 void Parallelipiped::read(std::istream& is) {
     int choice;
-    std::cout << "Âûáåðèòå ñïîñîá ñîçäàíèÿ:\n"
-        << "1 - ïî òð¸ì âåðøèíàì (îáùàÿ âåðøèíà + ñìåæíûå ïî X, Y, Z)\n"
-        << "2 - ïî âåðøèíå è ðàçìåðàì (äëèíà øèðèíà âûñîòà)\n"
-        << "3 - ïî äâóì âåðøèíàì ãëàâíîé äèàãîíàëè (ìèíèìàëüíàÿ è ìàêñèìàëüíàÿ)\n"
-        << "4 - ïî 12 êîîðäèíàòàì (x1 y1 z1 x2 y2 z2 x3 y3 z3 x4 y4 z4)\n";
+    std::cout << "Выберите способ создания:\n"
+        << "VERSHINbl - по трём вершинам (общая вершина + смежные по X, Y, Z)\n"
+        << "RAZMERbl - по вершине и размерам (длина ширина высота)\n"
+        << "DIAGONALb - по двум вершинам главной диагонали (минимальная и максимальная)\n"
+        << "KOORDINATbl - по 12 координатам (x1 y1 z1 x2 y2 z2 x3 y3 z3 x4 y4 z4)\n";
     is >> choice;
 
     switch (choice) {
-    case 1: {
+    case VERSHINbl: {
         Point v1, v2, v3, v4;
-        std::cout << "Ââåäèòå 4 âåðøèíû (x y z äëÿ êàæäîé):\n";
+        std::cout << "Введите 4 вершины (x y z для каждой):\n";
         is >> v1 >> v2 >> v3 >> v4;
         *this = Parallelipiped(v1, v2, v3, v4);
         break;
     }
-    case 2: {
+    case RAZMERbl: {
         Point vertex;
-        double l, w, h;
-        std::cout << "Ââåäèòå âåðøèíó (x y z), çàòåì äëèíó, øèðèíó, âûñîòó:\n";
-        is >> vertex >> l >> w >> h;
-        *this = Parallelipiped(vertex, l, w, h);
+        double length, width, height;
+        std::cout << "Введите вершину (x y z), затем длину, ширину, высоту:\n";
+        is >> vertex >> length >> width >> height;
+        *this = Parallelipiped(vertex, length, width, height);
         break;
     }
-    case 3: {
+    case DIAGONALb: {
         Point minV, maxV;
-        std::cout << "Ââåäèòå ìèíèìàëüíóþ âåðøèíó (x y z) è ìàêñèìàëüíóþ âåðøèíó (x y z):\n";
+        std::cout << "Введите минимальную вершину (x y z) и максимальную вершину (x y z):\n";
         is >> minV >> maxV;
         *this = Parallelipiped(minV, maxV);
         break;
     }
-    case 4: {
+    case KOORDINATbl: {
         double x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4;
-        std::cout << "Ââåäèòå 12 êîîðäèíàò (x1 y1 z1 x2 y2 z2 x3 y3 z3 x4 y4 z4):\n";
+        std::cout << "Введите 12 координат (x1 y1 z1 x2 y2 z2 x3 y3 z3 x4 y4 z4):\n";
         is >> x1 >> y1 >> z1 >> x2 >> y2 >> z2 >> x3 >> y3 >> z3 >> x4 >> y4 >> z4;
         *this = Parallelipiped(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4);
         break;
     }
     default:
-        throw std::invalid_argument("Íåâåðíûé ñïîñîá ñîçäàíèÿ");
+        throw std::invalid_argument("Неверный способ создания");
     }
 }
 
