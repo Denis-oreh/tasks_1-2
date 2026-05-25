@@ -46,7 +46,7 @@ SinglyLinkedList::~SinglyLinkedList()
 }
 
 // Вставка в начало
-void SinglyLinkedList::insertAtBeginning(int value)
+void SinglyLinkedList::insertAtBeginning(const int value)
 {
     Node* newNode = new Node(value);
     newNode->next = m_head;
@@ -55,7 +55,7 @@ void SinglyLinkedList::insertAtBeginning(int value)
 }
 
 // Вставка в конец
-void SinglyLinkedList::insertAtEnd(int value)
+void SinglyLinkedList::insertAtEnd(const int value)
 {
     Node* newNode = new Node(value);
     if (!m_head)
@@ -73,7 +73,7 @@ void SinglyLinkedList::insertAtEnd(int value)
 }
 
 // Вставка после значения
-void SinglyLinkedList::insertAfterValue(int afterValue, int newValue)
+void SinglyLinkedList::insertAfterValue(const int afterValue, const int newValue)
 {
     Node* current = m_head;
     while (current && current->data != afterValue)
@@ -89,7 +89,7 @@ void SinglyLinkedList::insertAfterValue(int afterValue, int newValue)
 }
 
 // Удаление по значению
-void SinglyLinkedList::removeByValue(int value)
+void SinglyLinkedList::removeByValue(const int value)
 {
     if (!m_head)
         throw std::out_of_range("Список пуст");
@@ -117,7 +117,7 @@ void SinglyLinkedList::removeByValue(int value)
 }
 
 // Поиск значения
-bool SinglyLinkedList::find(int value) const
+bool SinglyLinkedList::find(const int value) const
 {
     Node* current = m_head;
     while (current)
@@ -130,7 +130,7 @@ bool SinglyLinkedList::find(int value) const
 }
 
 // Модификация значения
-void SinglyLinkedList::modifyValue(int oldValue, int newValue)
+void SinglyLinkedList::modifyValue(const int oldValue, const int newValue)
 {
     Node* current = m_head;
     while (current && current->data != oldValue)
