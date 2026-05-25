@@ -21,7 +21,7 @@ private:
          * @brief Конструктор узла
          * @param val Значение для узла
          */
-        Node(int val) : data(val), next(nullptr) {}
+        Node(const int val) : data(val), next(nullptr) {}
     };
 
     Node* m_head;    // Указатель на первый узел списка
@@ -96,7 +96,7 @@ public:
      * @param value Значение для поиска
      * @return true - если значение найдено, false - иначе
      */
-    bool find(int value) const;
+    bool find(const int value) const;
 
     /**
      * @brief Модификация значения первого найденного узла
