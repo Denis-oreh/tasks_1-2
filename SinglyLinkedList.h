@@ -27,16 +27,16 @@ public:
     ~SinglyLinkedList();
 
     // Методы вставки
-    void insertAtBeginning(int value);
-    void insertAtEnd(int value);
-    void insertAfterValue(int afterValue, int newValue);
+    void insertAtBeginning(const int value);
+    void insertAtEnd(const int value);
+    void insertAfterValue(const int afterValue, const int newValue);
     
     // Методы удаления
-    void removeByValue(int value);
+    void removeByValue(const int value);
     
     // Методы поиска и модификации
     bool find(int value) const;
-    void modifyValue(int oldValue, int newValue);
+    void modifyValue(const int oldValue, const int newValue);
     
     // Методы доступа к информации
     bool is_empty() const;
