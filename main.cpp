@@ -6,15 +6,15 @@
 void showMenu()
 {
     std::cout << "\n========== МЕНЮ ==========\n";
-    std::cout << "1 - Добавить в начало\n";
-    std::cout << "2 - Добавить в конец\n";
-    std::cout << "3 - Добавить после значения\n";
-    std::cout << "4 - Удалить по значению\n";
-    std::cout << "5 - Найти значение\n";
-    std::cout << "6 - Изменить значение\n";
-    std::cout << "7 - Вывести список\n";
-    std::cout << "8 - Показать размер и статус\n";
-    std::cout << "0 - Выход\n";
+    std::cout << "NACHALO - Добавить в начало\n";
+    std::cout << "KONEC - Добавить в конец\n";
+    std::cout << "DOBAVITb - Добавить после значения\n";
+    std::cout << "YDALITb - Удалить по значению\n";
+    std::cout << "POISK - Найти значение\n";
+    std::cout << "SMENA - Изменить значение\n";
+    std::cout << "SPISOK - Вывести список\n";
+    std::cout << "RAZMER - Показать размер и статус\n";
+    std::cout << "EXIT - Выход\n";
     std::cout << "Ваш выбор: ";
 }
 
@@ -44,21 +44,21 @@ int main()
         
         switch (choice)
         {
-        case 1:
+        case NACHALO:
             std::cout << "Введите значение для добавления в начало: ";
             std::cin >> val;
             list.insertAtBeginning(val);
             std::cout << "Список после добавления: " << list << std::endl;
             break;
             
-        case 2:
+        case KONEC:
             std::cout << "Введите значение для добавления в конец: ";
             std::cin >> val;
             list.insertAtEnd(val);
             std::cout << "Список после добавления: " << list << std::endl;
             break;
             
-        case 3:
+        case DOBAVITb:
             std::cout << "После какого значения вставить: ";
             std::cin >> oldVal;
             std::cout << "Какое значение вставить: ";
@@ -74,7 +74,7 @@ int main()
             }
             break;
             
-        case 4:
+        case YDALITb:
             std::cout << "Введите значение для удаления: ";
             std::cin >> val;
             try
@@ -88,7 +88,7 @@ int main()
             }
             break;
             
-        case 5:
+        case POISK:
             std::cout << "Введите значение для поиска: ";
             std::cin >> val;
             if (list.find(val))
@@ -97,7 +97,7 @@ int main()
                 std::cout << "Значение " << val << " не найдено" << std::endl;
             break;
             
-        case 6:
+        case SMENA:
             std::cout << "Какое значение заменить: ";
             std::cin >> oldVal;
             std::cout << "На какое значение заменить: ";
@@ -113,16 +113,16 @@ int main()
             }
             break;
             
-        case 7:
+        case SPISOK:
             std::cout << "Текущий список: " << list << std::endl;
             break;
             
-        case 8:
+        case RAZMER:
             std::cout << "Размер списка: " << list.get_size() << std::endl;
             std::cout << "Список пуст? " << (list.is_empty() ? "Да" : "Нет") << std::endl;
             break;
             
-        case 0:
+        case EXIT:
             std::cout << "Выход из программы" << std::endl;
             break;
             
